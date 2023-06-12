@@ -47,32 +47,54 @@ class ServiceBox extends Widget_Base {
 		$this->add_control(
 			'list',
 			[
-				'label' => esc_html__( 'Service List', 'elementor-addons' ),
+				'label' => esc_html__( 'Repeater List', 'textdomain' ),
 				'type' => \Elementor\Controls_Manager::REPEATER,
 				'fields' => [
 					
-
-
-
-                    [
+					[
+						'name'	=>'services_icon',
+						'label'	=> esc_html__( 'Services Icon','elementor-addons'),
+						'type'	=> \Elementor\Controls_Manager::ICONS,
+						'default'=> [
+							'value' => 'fas fa-circle',
+							'library' => 'fa-solid',
+						],
+					],
+					
+					[
 						'name' => 'list_title',
 						'label' => esc_html__( 'Title', 'textdomain' ),
 						'type' => \Elementor\Controls_Manager::TEXT,
 						'default' => esc_html__( 'List Title' , 'textdomain' ),
 						'label_block' => true,
 					],
-
-                    [
-                        'label' => esc_html__( 'Icon', 'textdomain' ),
-                        'type' => \Elementor\Controls_Manager::ICONS,
-                        'default' => [
-                            'value' => 'fas fa-circle',
-                            'library' => 'fa-solid',
-                        ]
-                        
-                    ],
-
-
+					[
+						'name' => 'list_content',
+						'label' => esc_html__( 'Content', 'textdomain' ),
+						'type' => \Elementor\Controls_Manager::WYSIWYG,
+						'default' => esc_html__( 'List Content' , 'textdomain' ),
+						'show_label' => false,
+					],
+					[
+						'name' => 'services_btn',
+						'label' => esc_html__( 'Button Label', 'textdomain' ),
+						'type' => \Elementor\Controls_Manager::TEXT,
+						'placeholder' => esc_html__( 'Type your title here', 'textdomain' ),
+					],
+					[
+						'name' => 'services_btn_LINK',
+						'label' => esc_html__( 'Button Link', 'textdomain' ),
+						'type' => \Elementor\Controls_Manager::URL,
+						'placeholder' => esc_html__( 'https://your-link.com', 'textdomain' ),
+						'options' => [ 'url', 'is_external', 'nofollow' ],
+						'default' => [
+							'url' => '',
+							'is_external' => true,
+							'nofollow' => true,
+							// 'custom_attributes' => '',
+						],
+					],
+					
 					
 				],
 				'default' => [
@@ -88,7 +110,19 @@ class ServiceBox extends Widget_Base {
 				'title_field' => '{{{ list_title }}}',
 			]
 		);
-		
+
+
+
+		$this->add_control(
+			'delete_content',
+			[
+				'label' => esc_html__( 'Delete Content', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::BUTTON,
+				'button_type' => 'danger',
+				'text' => esc_html__( 'Delete', 'textdomain' ),
+				
+			]
+		);
         
         
        
